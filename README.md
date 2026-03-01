@@ -44,7 +44,6 @@
 2.8 - 2.14
 
 - 解决先前的部分环境问题 成功在本地环境验证完整x86测试方案 并编写[验证报告](notes/pxe_boot_validation.md)
-- 运行了贾一飞同学的 QEMU 测试环境准备脚本 按脚本说明执行相关指令 客户机均能正常启动 验证脚本逻辑无误 但 `x86 nimbos` 的测试用例似乎需要手动执行
 - 阅读现有 runner 源码 分析 pxe 服务自动部署的接入点
 
 ### 第五周
@@ -54,4 +53,5 @@
 - 对[验证报告](notes/pxe_boot_validation.md)中的错误内容进行更正
 - 编写了 pxe 服务的[自动部署脚本](pxe-setup.sh) 包括 VMware + qemu 和真实环境的部署流程 并交付给赵长收老师进行验证
 - 拆分 pxe 自动部署脚本 并尝试与已有 runner 结合 已提交到分支 [github-runners](https://github.com/HoshimiP/github-runners/tree/feat/pxe-setup)
+
 - 编写改进后runner的使用文档 见 https://github.com/HoshimiP/github-runners/blob/feat/pxe-setup/docs/pxe-setup-guide.md
