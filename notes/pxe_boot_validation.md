@@ -62,7 +62,7 @@ sudo vim /etc/dnsmasq.conf
 conf-dir=/etc/dnsmasq.d/,*.conf
 ```
 - 创建 tftp 根目录
-```
+```bash
 sudo mkdir -p /var/lib/tftpboot
 sudo chmod -R 777 /var/lib/tftpboot
 ```
@@ -74,28 +74,28 @@ kernel tftp://192.168.1.200/kernel #根据环境修改
 boot
 ```
 ### 准备内核 
-```
+```bash
 sudo cp axvisor /var/lib/tftpboot/kernel
 # axvisor 由在 axvisor 仓库中执行 `cargo xtask build` 得到
 ```
 ### 下载 iPXE 镜像
-```
+```bash
 wget -O /var/lib/tftpboot/undionly.kpxe https://boot.ipxe.org/undionly.kpxe
 ```
 ### 创建二层接口(用于qemu tap)
-```
+```bash
 ip tuntap add dev tap0 mode tap  multi_queue user "$USER"
 ip link set tap0 up
 ip addr add 192.168.1.200/24 dev tap0
 # tap0 的 IP 即 PXE 服务器 IP，dnsmasq 会将该地址作为 next-server 返回给 iPXE
 ```
 ### 启动服务器
-```
+```bash
 sudo systemctl start dnsmasq
 sudo systemctl enable dnsmasq
 ```
 ### qemu 启动指令
-```
+```bash
 sudo qemu-system-x86_64 \
   -boot n \
   -m 128M \
@@ -125,7 +125,7 @@ sudo qemu-system-x86_64 \
 4. `boot.ipxe` 中指定通过 TFTP 加载 `kernel`
 
 ## 未完成项
-- 本报告中的验证结果仅覆盖 QEMU 环境真实硬件平台的启动流程仍需在具备可控网络与硬件条件后进一步测试
+- 本报告中的验证结果仅覆盖 QEMU 环境 真实硬件平台的启动流程仍需在具备可控网络与硬件条件后进一步测试
 
 ## 后续工作
 

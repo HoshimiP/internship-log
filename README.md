@@ -55,3 +55,19 @@
 - 拆分 pxe 自动部署脚本 并尝试与已有 runner 结合 已提交到分支 [github-runners](https://github.com/HoshimiP/github-runners/tree/feat/pxe-setup)
 
 - 编写改进后runner的使用文档 见 https://github.com/HoshimiP/github-runners/blob/feat/pxe-setup/docs/pxe-setup-guide.md
+
+### 第六周
+
+3.1 - 3.7
+
+- 修复了 runner 中 pxe 脚本的问题 经验证成功在本地部署可用的 pxe 服务
+- 尝试补充 https://arceos-hypervisor.github.io/axvisorbook/docs/design/test 中 x86 部分 初稿已完成 真实环境部署待验证
+
+### 第七周
+
+3.8 - 3.14
+
+- 解决了部分物理环境问题 更新了[验证报告](notes/pxe_boot_validation.md)
+- 验证 pxe-qemu 的自动化测试流程
+- 验证现有流程与 runner-wrapper 的适配
+- 尝试分析 [starry-vdso](https://github.com/Starry-OS/starry-vdso) 源码 编写了部分单元测试
