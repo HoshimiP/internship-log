@@ -23,14 +23,14 @@
 
 ## 日志
 
-### 第一周
+### 第1周
 1.25 - 1.31
 
 - 按 https://arceos-hypervisor.github.io/axvisorbook/docs/quickstart/qemu 上的步骤成功复现 qemu 平台的测试
 - 按 https://arceos-hypervisor.github.io/axvisorbook/docs/design/test/runner 部署 github-runner 成功运行 qemu 平台的 ci
 - 尝试使用 uboot 在 qemu-aarch64 模拟真实开发板测试流程 学习 uboot 使用与 qemu 配置 并尝试挂载 linux 启动
 
-### 第二周
+### 第2周
 
 2.2 - 2.7
 
@@ -39,14 +39,14 @@
 - 按照 https://github.com/orgs/arceos-hypervisor/discussions/347 成功验证测试流程 运行 nimbos 客户机 具体实现与原文有差异 见 [pxe_log](notes/pxe_log.md)
 - 尝试扩展 xtask 需要进一步计划具体实现
 
-### 第三周
+### 第3周
 
 2.8 - 2.14
 
 - 解决先前的部分环境问题 成功在本地环境验证完整x86测试方案 并编写[验证报告](notes/pxe_boot_validation.md)
 - 阅读现有 runner 源码 分析 pxe 服务自动部署的接入点
 
-### 第五周
+### 第5周
 
 2.22 - 2.28
 
@@ -56,14 +56,14 @@
 
 - 编写改进后runner的使用文档 见 https://github.com/HoshimiP/github-runners/blob/feat/pxe-setup/docs/pxe-setup-guide.md
 
-### 第六周
+### 第6周
 
 3.1 - 3.7
 
 - 修复了 runner 中 pxe 脚本的问题 经验证成功在本地部署可用的 pxe 服务
 - 尝试补充 https://arceos-hypervisor.github.io/axvisorbook/docs/design/test 中 x86 部分 初稿已完成 真实环境部署待验证
 
-### 第七周
+### 第7周
 
 3.8 - 3.14
 
@@ -71,3 +71,15 @@
 - 验证 pxe-qemu 的自动化测试流程
 - 验证现有流程与 runner-wrapper 的适配
 - 尝试分析 [starry-vdso](https://github.com/Starry-OS/starry-vdso) 源码 编写了部分单元测试
+
+### 第8-9周
+
+3.15 - 3.28
+
+- 将 starry-vdso 接入 starryOS 并编写用户态测试 验证时间相关函数已经能够走 vdso 路径 具体验证结果见[笔记](notes/vdso.md)
+- 修改了 x86 架构 getcpu 的初始化实现 为每个 cpu 分配独立 GDT 空间
+- 实现了 loongarch64 架构的 vdso_getcpu
+
+    遇到的问题
+
+-  loongarch64 / aarch64 / riscv64 的 musl 中缺少部分 vdso 入口 libc 调用会直接走 syscall 具体见[笔记](notes/vdso.md)
