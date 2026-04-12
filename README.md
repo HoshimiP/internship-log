@@ -83,3 +83,10 @@
     遇到的问题
 
 -  loongarch64 / aarch64 / riscv64 的 musl 中缺少部分 vdso 入口 libc 调用会直接走 syscall 具体见[笔记](notes/vdso.md)
+
+### 第10-11周
+
+- 使用 vdso-helper 编译了包含自定义 fast path 的 .so 文件
+- 优化了 starry-vdso 的 vvar 映射逻辑 使用户态可以正常通过 vdso基地址+偏移量 调用自定义 vdso 接口
+- 在已有可加载模块 `modules/kebpf` 中增加 vdso 数据页的更新逻辑。当有 ebpf 程序执行时，会将结果从 map 写入 vvar ，用户态可以直接通过 fast path 访问而避免使用系统调用读 map
+- 在 `api/src/lib.rs` 处增加 vdso 数据页的更新逻辑。每次 `register_timer_callback` 时会在 vvar 更新当前任务快照
