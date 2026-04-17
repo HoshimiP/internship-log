@@ -19,7 +19,7 @@
 - week3 - week5 2.8 - 2.28
   继续验证[x86测试方案](https://github.com/orgs/arceos-hypervisor/discussions/347) 尝试将 pxe 服务器部署流程与现有[runner](https://github.com/arceos-hypervisor/github-runners)结合 实现服务器配置与ipxe脚本编辑的自动化 并测试其功能 编写完整的部署文档
   
-## 任务三、为其他组件添加测试用例
+## 任务三、完善 starry-vdso 尝试编写基于 vdso fast path 的用户态线程调度器
 
 ## 日志
 
